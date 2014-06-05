@@ -237,7 +237,8 @@ class Crontab {
 	}
 	
 	function nextId() {
-                return (substr_count(listJobs(), '\n') + 1);
+		print $this->listJobs();
+                return (count($this->listJobs()) + 1);
         }
 }
 
