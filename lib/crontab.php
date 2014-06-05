@@ -235,6 +235,10 @@ class Crontab {
 		$result = exec($this->crontab.' -l;', $output, $retval);
 		return $output;
 	}
+	
+	function nextId() {
+                return (substr_count(listJobs(), '\n') + 1);
+        }
 }
 
 ?>

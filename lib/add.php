@@ -9,7 +9,10 @@
 	if(isset($_POST['month']) && $_POST['month'] != '') $cron->onMonth($_POST['month']);
 	if(isset($_POST['dayweek']) && $_POST['dayweek'] != '') $cron->onDayOfWeek($_POST['dayweek']);
 	if(isset($_POST['daymonth']) && $_POST['daymonth'] != '') $cron->onDayOfMonth($_POST['daymonth']);
-	if(isset($_POST['command']) && $_POST['command'] != '') $cron->doJob($_POST['command']);	
+	if(isset($_POST['command']) && $_POST['command'] != '') {
+                $command = '/opt/cronweb/runner.sh "' . $_POST['command'] . '" >/opt/cronweb/log/' . $cron.nextId()
+                $cron->doJob($command);
+	}
 
 	if($cron->activate()) {
 		echo json_encode($cron);
